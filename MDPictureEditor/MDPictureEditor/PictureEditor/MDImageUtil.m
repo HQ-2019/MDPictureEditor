@@ -37,18 +37,27 @@
 /// @param originalImage 原图
 /// @param cropRect 裁剪区域
 + (UIImage *)cropImage:(UIImage *)originalImage rect:(CGRect)cropRect {
-//    CGImageRef subImageRef = CGImageCreateWithImageInRect(originalImage.CGImage, clicpRect);
-//    CGRect smallRect = CGRectMake(0, 0, CGImageGetWidth(subImageRef), CGImageGetHeight(subImageRef));
+    // 裁剪区域溢出时返回原图
+    if ((cropRect.origin.x + cropRect.size.width) > originalImage.size.width ||
+        (cropRect.origin.y + cropRect.size.height) > originalImage.size.height) {
+        NSAssert(NO, @"图片裁剪区域溢出，返回原图");
+        return originalImage;;
+    }
+    
+//    // 裁剪图片
+//    CGImageRef imageRef = CGImageCreateWithImageInRect(originalImage.CGImage, cropRect);
+//    CGRect smallRect = CGRectMake(0, 0, CGImageGetWidth(imageRef), CGImageGetHeight(imageRef));
 //    // 开启图形上下文
 //    UIGraphicsBeginImageContext(smallRect.size);
 //    CGContextRef context = UIGraphicsGetCurrentContext();
-//    CGContextDrawImage(context, smallRect, subImageRef);
-//    UIImage * image = [UIImage imageWithCGImage:subImageRef];
+//    CGContextDrawImage(context, smallRect, imageRef);
+//    UIImage * image = [UIImage imageWithCGImage:imageRef];
 //    // 关闭图形上下文
 //    UIGraphicsEndImageContext();
-//    CGImageRelease(subImageRef);
+//    CGImageRelease(imageRef);
 //    return image;
-    
+
+    // 裁剪图片
     CGImageRef newImageRef = CGImageCreateWithImageInRect(originalImage.CGImage, cropRect);
     UIImage *newImage = [UIImage imageWithCGImage:newImageRef];
     CGImageRelease(newImageRef);

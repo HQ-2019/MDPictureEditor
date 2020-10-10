@@ -171,10 +171,11 @@
 
 /// 获取图片裁剪区域
 - (CGRect)getImageCropRect {
-    CGFloat x = self.bgScrollView.contentOffset.x / self.imageZoomScale;
-    CGFloat y = self.bgScrollView.contentOffset.y / self.imageZoomScale;
-    CGFloat width = self.bgScrollView.bounds.size.width / self.imageZoomScale;
-    CGFloat height = self.bgScrollView.bounds.size.height / self.imageZoomScale;
+    CGFloat scrollViewZoomScale = self.bgScrollView.zoomScale;  // 滚动视图当前的缩放值
+    CGFloat x = self.bgScrollView.contentOffset.x / self.imageZoomScale / scrollViewZoomScale;
+    CGFloat y = self.bgScrollView.contentOffset.y / self.imageZoomScale / scrollViewZoomScale;
+    CGFloat width = self.bgScrollView.bounds.size.width / self.imageZoomScale / scrollViewZoomScale;
+    CGFloat height = self.bgScrollView.bounds.size.height / self.imageZoomScale / scrollViewZoomScale;
     CGRect cropRect = CGRectMake(x, y, width, height);
     return cropRect;
 }
@@ -217,6 +218,9 @@
 /// 将图片还原
 - (IBAction)restoreImageTapAction:(UITapGestureRecognizer *)sender {
     [self defaultConfig];
+    if (self.changeImageBlcok) {
+        self.changeImageBlcok(self.imageView.image);
+    }
 }
 
 /// 旋转图片 每次旋转90°
