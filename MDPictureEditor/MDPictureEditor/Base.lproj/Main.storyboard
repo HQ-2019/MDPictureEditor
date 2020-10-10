@@ -17,21 +17,70 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cMi-Jq-eFq">
-                                <rect key="frame" x="121" y="433" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="timg_1" translatesAutoresizingMaskIntoConstraints="NO" id="z7X-6z-QO7">
+                                <rect key="frame" x="20" y="20" width="182" height="200"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="7Ka-UJ-b8g"/>
+                                </constraints>
                                 <connections>
-                                    <action selector="buttonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VDZ-ck-H8N"/>
+                                    <outletCollection property="gestureRecognizers" destination="EVQ-30-Fhe" appends="YES" id="30K-c9-1BH"/>
                                 </connections>
-                            </button>
+                            </imageView>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="timg_2" translatesAutoresizingMaskIntoConstraints="NO" id="vHl-NU-joL">
+                                <rect key="frame" x="212" y="20" width="182" height="200"/>
+                                <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="z1M-ht-eKG" appends="YES" id="wYa-cE-Wcx"/>
+                                </connections>
+                            </imageView>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="timg_3" translatesAutoresizingMaskIntoConstraints="NO" id="vOv-ed-CT5">
+                                <rect key="frame" x="107" y="234" width="200" height="200"/>
+                                <color key="backgroundColor" systemColor="systemTealColor"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="9qL-Xz-P4n"/>
+                                    <constraint firstAttribute="width" constant="200" id="SWI-GG-y4A"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="KCu-R3-7t8" appends="YES" id="RYj-F8-o2x"/>
+                                </connections>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="vOv-ed-CT5" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="4Zc-s8-Qbg"/>
+                            <constraint firstItem="z7X-6z-QO7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="6pS-pw-MWI"/>
+                            <constraint firstItem="vHl-NU-joL" firstAttribute="top" secondItem="z7X-6z-QO7" secondAttribute="top" id="OOR-0a-c14"/>
+                            <constraint firstItem="z7X-6z-QO7" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="TmU-Gu-RLX"/>
+                            <constraint firstItem="vHl-NU-joL" firstAttribute="height" secondItem="z7X-6z-QO7" secondAttribute="height" id="XyA-Su-mYg"/>
+                            <constraint firstItem="vHl-NU-joL" firstAttribute="width" secondItem="z7X-6z-QO7" secondAttribute="width" id="ZN4-Xc-1BH"/>
+                            <constraint firstItem="vOv-ed-CT5" firstAttribute="top" secondItem="vHl-NU-joL" secondAttribute="bottom" constant="14" id="jfw-xT-geo"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vHl-NU-joL" secondAttribute="trailing" constant="20" id="nWs-xk-9kE"/>
+                            <constraint firstItem="vHl-NU-joL" firstAttribute="leading" secondItem="z7X-6z-QO7" secondAttribute="trailing" constant="10" id="pli-dc-GV6"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="8ma-r5-Nob"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="EVQ-30-Fhe">
+                    <connections>
+                        <action selector="imageTap_1:" destination="BYZ-38-t0r" id="Lfe-K2-sS7"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="z1M-ht-eKG">
+                    <connections>
+                        <action selector="imageTap_2:" destination="BYZ-38-t0r" id="qPH-2V-9aV"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="KCu-R3-7t8">
+                    <connections>
+                        <action selector="imageTap_3:" destination="BYZ-38-t0r" id="ALB-8X-y5s"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="76.811594202898561" y="65.625"/>
         </scene>
@@ -53,8 +102,17 @@
         </scene>
     </scenes>
     <resources>
+        <image name="timg_1" width="645" height="344"/>
+        <image name="timg_2" width="1125" height="2436"/>
+        <image name="timg_3" width="957" height="1256"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemTealColor">
+            <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
